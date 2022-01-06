@@ -17,7 +17,10 @@ function HomePage({ navigation }){
       />
       <Button
         title="Go to Other Page"
-        onPress={() => navigation.navigate('Other')}
+        onPress={() => navigation.navigate('Other', {
+          itemId: 86,
+          otherParam: 'anything you want here',
+        })}
       />
     </View>
   )
@@ -35,14 +38,17 @@ function UserPage({ navigation }) {
   );
 }
 
-function OtherPage({ navigation }) {
+function OtherPage({ route, navigation }) {
+  const { itemId, otherParam } = route.params;
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Other Page</Text>
+      <Text>Other Page {itemId} {otherParam}</Text>
+      
       <Button
         title="Go to Homme Page"
         onPress={() => navigation.navigate('Home')}
       />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
 }
@@ -54,7 +60,7 @@ const App=()=>{
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomePage} />
-        <Stack.Screen name="User" component={UserPage} />
+        <Stack.Screen name="User" options={{ title: 'User Page' }} component={UserPage} />
         <Stack.Screen name="Other" component={OtherPage} />
       </Stack.Navigator>
     </NavigationContainer>
