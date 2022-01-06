@@ -59,7 +59,16 @@ const App=()=>{
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomePage} />
+        <Stack.Screen name="Home" 
+        options={(route, navigation)=>({
+          title: 'Main Page',
+          headerTitleAlign: 'center',
+          headerTintColor: '#fff',
+          headerStyle:{
+            backgroundColor: '#000'
+          }
+        })}
+        component={HomePage} />
         <Stack.Screen name="User" options={{ title: 'User Page' }} component={UserPage} />
         <Stack.Screen name="Other" component={OtherPage} />
       </Stack.Navigator>
