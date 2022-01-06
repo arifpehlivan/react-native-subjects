@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text} from "react-native";
+import { View, Text, Button} from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function HomePage(){
+function HomePage({ navigation }){
   return(
     <View style={{
       flex: 1,
@@ -11,22 +11,38 @@ function HomePage(){
       alignItems: 'center'
     }}>
       <Text>Home Page</Text>
+      <Button
+        title="Go to User Page"
+        onPress={() => navigation.navigate('User')}
+      />
+      <Button
+        title="Go to Other Page"
+        onPress={() => navigation.navigate('Other')}
+      />
     </View>
   )
 }
 
-function UserPage() {
+function UserPage({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>User Page</Text>
+      <Button
+        title="Go to Home Page"
+        onPress={() => navigation.navigate('Home')}
+      />
     </View>
   );
 }
 
-function OtherPage() {
+function OtherPage({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Other Page</Text>
+      <Button
+        title="Go to Homme Page"
+        onPress={() => navigation.navigate('Home')}
+      />
     </View>
   );
 }
