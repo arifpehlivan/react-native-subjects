@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TextInput } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
@@ -13,6 +13,7 @@ function HomePage(){
       alignItems: 'center'
     }}>
       <Text>Home Page</Text>
+      <TextInput style={{height:40, width:"100%", borderWidth:1}}/>
     </View>
   )
 }
@@ -39,7 +40,7 @@ function OtherPage() {
 const App=()=>{
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator keyboardDismissMode="on-drag" tabBarPosition="bottom">
        <Tab.Screen name="Home" options={ {headerTitleAlign: 'center'}} component={HomePage} />
       <Tab.Screen name="User" options={ {headerTitleAlign: 'center'}} component={UserPage} />
       <Tab.Screen name="Other" options={ {headerTitleAlign: 'center'}} component={OtherPage} /> 
